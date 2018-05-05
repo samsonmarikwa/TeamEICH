@@ -1,2 +1,2 @@
-# TeamEICH
-Team EICH Project - This is a project that we worked on as a group of students
+# team_eich_project
+Project 1 Team Eich

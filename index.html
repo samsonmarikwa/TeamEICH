@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>I'm New Here!</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Contrail+One|Poiret+One|VT323" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <link rel="icon" href="assets/images/logo.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+
+        <div class="jumbotron container">
+          <img src="assets/images/logo.png" id="logo"></img><span>I'm New Here!</span>
+          <input type="text" id="search-term" placeholder="Add an address, city or zip code.">
+            <button type="submit" id="run-search" class="btn btn-primary">Search</button>
+        </div>
+    
+    
+   
+   
+    
+    <br>
+    <div class="container">
+      <div class="row" id="bug-area">
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="search-title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <label for="distance">Distance: miles away</label>
+                    <select class="form-control" id="distance">
+                      <option>5</option>
+                      <option>10</option>
+                      <option>15</option>
+                      <option>20</option>
+                    </select>
+                    <label for="type">What do you want to do?</label>
+                    <select class="form-control" id="type">
+                      <option>Bar</option>
+                      <option>Cafe</option>
+                      <option>Bowling Alley</option>
+                      <option>Gym</option>
+                      <option>Movie Theater</option>
+                      <option>Night Club</option>
+                      <option>Park</option>
+                      <option>Restaurant</option>
+                      <option>Shopping Mall</option>
+                      <option>Spa</option>
+                    </select>
+                    <input type="text" class="form-control hidden" id="location-input">
+                    <br>
+                   
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default" id="places-submit" data-dismiss="modal">Submit</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+
+    
+
+    <div id="table-data" class="container hidden">
+        <div class="row" id="places-area">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+              </table>
+        </div>
+      </div>
+
+<!-- <div class="container hidden" id="places-search-div">
+  <div class="row">
+      <div class="form-group" class="col-xs-12 col-sm-8 col-sm-offset-2">
+          <label for="distance">Distance: miles away</label>
+          <select class="form-control" id="distance">
+            <option>5</option>
+            <option>10</option>
+            <option>15</option>
+            <option>20</option>
+          </select>
+          <label for="type">What do you want to do?</label>
+          <select class="form-control" id="type">
+            <option>Bar</option>
+            <option>Cafe</option>
+            <option>Bowling Alley</option>
+            <option>Gym</option>
+            <option>Movie Theater</option>
+            <option>Night Club</option>
+            <option>Park</option>
+            <option>Restaurant</option>
+            <option>Shopping Mall</option>
+            <option>Spa</option>
+          </select>
+          <input type="text" class="form-control hidden" id="location-input">
+          <br>
+          <button type="submit" class="btn btn-default" id="places-submit">Submit</button>
+        </div>
+  </div>
+</div> -->
+
+<!-- <div class="container">
+  <div class="row">
+      <div id="map-div"></div>
+  </div>
+  
+</div> -->
+
+<div class="modal fade" id="mapModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="map-name"></h4>
+        </div>
+        <div class="modal-body">
+          <div id="map-div"></div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+<div id="footer">
+    <div class="col-sm-12">
+        <p class="copyright">&#169Copyright 2018 Team EICH</p>
+    </div>
+</div>
+
+
+
+
+      
+
+    
+
+    <!-- =============================================================================== -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-9rm4gqljdlkdqlJyeFe2YHKfEIS3g6o&libraries=places"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
