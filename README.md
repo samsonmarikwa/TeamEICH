@@ -11,4 +11,4 @@ You can access the application on [Heroku](https://serene-forest-57972.herokuapp
 
 ## Setup
 
-You can download the code to your machine. You will need to create your own credentials on [Firebase Console](https://console.firebase.google.com) and replace line 5 to 10 in the api.js file with your own firebase config.
+You can download the code to your machine. You will need to create your own credentials on [Firebase Console](https://console.firebase.google.com) and replace line 23 to 28 in the api.js file with your own firebase config. Two APIs have been used in the application, namely, openweathermap and googleapis.
